@@ -181,7 +181,7 @@
         var options = ["fire", "water"];
         var back = false;
         var health = 100;
-        var t1 = options[Math.floor(Math.random() * options.length)];
+        var t1;
         function game() {
             Array.from(document.querySelectorAll("button")).forEach(but => {
                 but.remove();
@@ -1279,10 +1279,12 @@
 
         function join() {
             var roomname = prompt("What is the room?");
+            t1 = "water";
             socket.emit("join", roomname);
         }
         function create() {
             var roomname = prompt("Choose a room name.");
+            t1 = "fire";
             socket.emit("start", roomname);
         }
         socket.on("opengame", game)
